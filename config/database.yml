@@ -21,7 +21,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: slinky_production
+  database: rails_blog_production
   host: localhost
   pool: 5
   username:
