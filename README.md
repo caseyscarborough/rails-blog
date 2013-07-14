@@ -1,6 +1,7 @@
 # Rails Blog
 
-This is a very basic blog built using Rails 4 and Ruby 2.0. More functionality to come.
+This is a very basic blog built using Rails 4 and Ruby 2.0. It currently has the functionality of
+creating, updating, and deleting posts. More functionality to come.
 
 ## Using the application
 
@@ -11,8 +12,16 @@ If you'd like to check out the application or contribute to it, follow the instr
 git clone http://github.com/caseyscarborough/rails-blog.git
 cd rails-blog
 bundle install
+```
 
-# Migrate the database and run the rails server
+Then, update the config/config.yml file with the information about your blog.
+```yaml
+title: Rails Blog
+author: Casey Scarborough
+```
+
+Then proceed to migrate the database and run the rails server.
+```bash
 rake db:migrate
 rails server
 ```
@@ -21,7 +30,10 @@ Then navigate to [http://localhost:3000](http://localhost:3000) in your web brow
 
 ## To-Do
 
-* Begin development.
+* Add comments to posts.
+* Add tags to posts.
+* Add users.
+* Implement authentication and authorization.
 
 
 ## Contributing
