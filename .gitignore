@@ -31,3 +31,7 @@
 .Spotlight-V100
 .Trashes
 Thumbs.db
+
+# Ignore capistrano files
+/Capfile
+/config/deploy.rb

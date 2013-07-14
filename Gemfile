@@ -20,14 +20,18 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development, :test do
-  gem 'rspec-rails'
+group :development do
+  gem 'rvm-capistrano'
   gem 'capistrano'
+end
+
+group :development, :test do
   gem 'sqlite3'
 end
 
 group :test do
   gem 'capybara'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
