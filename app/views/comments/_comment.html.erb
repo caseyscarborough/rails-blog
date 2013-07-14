@@ -1,0 +1,5 @@
+<%= comment.content %><br />
+<small class="muted">By <%= comment.author %> &middot; <%= comment.created_at.strftime("%B %d, %Y") %></small>
+<%= link_to 'Edit', edit_post_comment_path(@post, comment) %> |
+<%= link_to 'Delete', post_comment_path(@post, comment), data: { confirm: 'Are you sure?' }, :method => :delete %>
+<br /><br />

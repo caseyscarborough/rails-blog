@@ -21,9 +21,8 @@
 # Ignore IDE files
 /.idea
 
-# Ignore vendor and lib folders for now
+# Ignore vendor folders for now
 /vendor
-/lib
 
 # Operating System Files
 .DS_Store

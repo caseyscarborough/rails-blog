@@ -4,6 +4,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  show_parameters: true
 
 test:
   <<: *defaults

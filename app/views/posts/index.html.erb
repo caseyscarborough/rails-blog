@@ -11,7 +11,7 @@
     <%= link_to 'Show', post %> &middot;
     <%= link_to 'Edit', edit_post_path(post) %> &middot;
     <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <p><%= truncate post.content %></p>
+    <p><%= truncate post.content, length: 255 %></p>
   </div><br />
 <% end %>
 <div class="form-actions">

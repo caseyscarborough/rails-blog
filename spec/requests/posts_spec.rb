@@ -71,4 +71,10 @@ describe "Posts" do
 
   end
 
+  describe "show post page" do
+    before { visit post_path first_post }
+    it { should have_title(first_post.title) }
+    it { should have_content('Comments') }
+  end
+
 end

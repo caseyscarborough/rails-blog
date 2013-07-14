@@ -8,21 +8,24 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <div class="top hidden-phone"></div>
+  <div class="top hidden-phone hidden-tablet"></div>
   <div class="container">
     <div class="row-fluid">
       <div class="span2 hidden-phone"></div>
       <div class="span8">
-        <% if !notice.nil? %>
-          <div class="alert">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= notice %>
-        </div>
+        <% flash.each do |name, msg| %>
+          <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+            <a class="close" data-dismiss="alert">&#215;</a>
+            <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+          </div>
         <% end %>
         <%= yield %>
       </div>
     </div>
   </div>
+  <% if BLOG['show_parameters'] == true %>
+     <%= render 'layouts/parameters' %><br /><br />
+  <% end %>
   <%= render 'layouts/footer' %>
 
 
