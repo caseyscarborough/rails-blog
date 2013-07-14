@@ -13,4 +13,14 @@ FactoryGirl.define do
     title "Random Post"
     content "This is a random post."
   end
+
+  factory :user do
+    username "test"
+    email "test@example.com"
+    first_name "Test"
+    last_name "User"
+    password "password"
+    password_confirmation "password"
+    is_admin true
+  end
 end

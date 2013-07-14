@@ -78,6 +78,12 @@ hr {
 }
 
 
+#login-form {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+
 .form-actions {
   background: none;
 }
@@ -91,4 +97,8 @@ hr {
 }
 .top {
   height: 60px;
+}
+
+.center {
+  text-align: center;
 }

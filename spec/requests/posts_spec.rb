@@ -6,6 +6,14 @@ describe "Posts" do
   first_post = FactoryGirl.create(:first_post)
   second_post = FactoryGirl.create(:second_post)
   random_post = FactoryGirl.create(:random_post)
+  let(:user) { FactoryGirl.create(:user) }
+
+  before do
+    visit login_path
+    fill_in "Username", with: user.username
+    fill_in "Password", with: user.password
+    click_button "Sign in"
+  end
 
   describe "list page" do
 

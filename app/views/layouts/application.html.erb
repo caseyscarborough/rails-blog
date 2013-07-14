@@ -14,7 +14,7 @@
       <div class="span2 hidden-phone"></div>
       <div class="span8">
         <% flash.each do |name, msg| %>
-          <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <div class="alert alert-<%= name %>">
             <a class="close" data-dismiss="alert">&#215;</a>
             <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
           </div>
@@ -22,7 +22,7 @@
         <%= yield %>
       </div>
     </div>
-  </div>
+  </div><br />
   <% if BLOG['show_parameters'] == true %>
      <%= render 'layouts/parameters' %><br /><br />
   <% end %>
