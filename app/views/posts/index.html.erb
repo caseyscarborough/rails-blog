@@ -1,0 +1,19 @@
+<% provide(:title, 'Post List') %>
+<div class="heading">
+  <h1 class="pull-left">Post List</h1>
+  <%= link_to 'New Post', new_post_path, class: 'btn btn-primary pull-right' %>
+</div>
+<div class="clear"></div><br />
+<% @posts.each do |post| %>
+  <div class="post shadow">
+    <h2><%= post.title %></h2>
+    <small class="muted"><%= post.created_at.strftime("%B %d, %Y") %></small>&nbsp;&nbsp;
+    <%= link_to 'Show', post %> &middot;
+    <%= link_to 'Edit', edit_post_path(post) %> &middot;
+    <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <p><%= truncate post.content %></p>
+  </div><br />
+<% end %>
+<div class="form-actions">
+</div>
+

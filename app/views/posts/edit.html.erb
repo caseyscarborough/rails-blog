@@ -1,0 +1,10 @@
+<% provide(:title, "Edit Post") %>
+<h1>Edit Post</h1>
+<br />
+<%= render 'form' %>
+<br />
+<div class="form-actions">
+  <%= link_to 'Show', @post, class: 'btn btn-primary' %>
+  <%= link_to 'Back', posts_path, class: 'btn' %>
+</div>
+

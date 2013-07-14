@@ -1,0 +1,88 @@
+@import 'bootstrap';
+@import 'bootstrap-responsive';
+
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+.post h3{
+  text-align:center;
+  position:relative;
+  top:80px;
+}
+.post {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #f9f9f9;
+}
+/*
+  Paper-like shadow effect on post divs from
+  http://www.paulund.co.uk/creating-different-css3-box-shadows-effects
+*/
+
+
+.shadow {
+  position: relative;
+}
+
+.shadow:before, .shadow:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+
+.shadow:after {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+
+
+.navbar .brand {
+  margin-left: 8%;
+  color: white;
+}
+
+.footer {
+  text-align: center;
+}
+
+
+.form-actions {
+  background: none;
+}
+
+/* HELPER CLASSES */
+.clear {
+  clear: both;
+}
+.error {
+  color: red;
+}
+.top {
+  height: 60px;
+}

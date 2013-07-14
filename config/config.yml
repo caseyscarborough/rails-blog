@@ -1,0 +1,12 @@
+defaults: &defaults
+  title: Rails Blog
+  author: Casey Scarborough
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
