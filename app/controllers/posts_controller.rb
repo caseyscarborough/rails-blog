@@ -3,10 +3,27 @@ class PostsController < ApplicationController
   before_filter :authorize, only: [:new, :edit, :update, :destroy]
 
   def index
-    @posts = Post.order('created_at DESC')
+    if params[:day]
+      @posts = Post.where(
+          'year = ? and month = ? and day = ?',
+          params[:year], params[:month], params[:day]
+      )
+    elsif params[:month]
+      @posts = Post.where('year = ? and month = ?', params[:year], params[:month])
+    elsif params[:year]
+      @posts = Post.where('year = ?', params[:year])
+    else
+      @posts = Post.all
+    end
+
+    @posts = @posts.order('created_at DESC')
+
   end
 
   def show
+    if params[:slug]
+      @post = Post.find_by_permalink(request.fullpath)
+    end
   end
 
   def new
@@ -18,9 +35,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.created_at = Time.now
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post.permalink, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         format.html { render action: 'new' }
@@ -32,7 +50,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post.permalink, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -52,7 +70,7 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find_by_slug(params[:slug]) || Post.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

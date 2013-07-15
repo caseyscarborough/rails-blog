@@ -24,11 +24,11 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @post.permalink, notice: 'Comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         flash[:error] = 'There was an error saving the comment.'
-        format.html { redirect_to @post }
+        format.html { redirect_to @post.permalink }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @post, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @post.permalink, notice: 'Comment was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: 'edit' }
@@ -53,7 +53,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @post, notice: 'Comment was successfully deleted' }
+      format.html { redirect_to @post.permalink, notice: 'Comment was successfully deleted' }
       format.json { head :ok }
     end
   end

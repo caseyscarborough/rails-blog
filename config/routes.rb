@@ -1,5 +1,26 @@
 RailsBlog::Application.routes.draw do
 
+  get '/:year/:month/:day/:slug',
+      :to         => 'posts#show',
+      :year       => /(19|20)\d{2}/,
+      :month      => /[01]?\d/,
+      :day        => /[0-3]?\d/
+
+  get '/:year/:month/:day',
+      :to         => 'posts#index',
+      :year       => /(19|20)\d{2}/,
+      :month      => /[01]?\d/,
+      :day        => /[0-3]?\d/
+
+  get '/:year/:month',
+      :to         => 'posts#index',
+      :year       => /(19|20)\d{2}/,
+      :month      => /[01]?\d/
+
+  get '/:year',
+    :to   => 'posts#index',
+    :year => /(19|20)\d{2}/
+
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
