@@ -1,8 +1,14 @@
-<%= comment.content %><br />
-<small class="muted">By <%= comment.author %> &middot; <%= comment.created_at.strftime("%B %d, %Y") %>
-  &middot; <%= comment.created_at.strftime("%H:%m") %> </small>
-<% if current_user %>
-<%= link_to 'Edit', edit_post_comment_path(@post, comment) %> |
-<%= link_to 'Delete', post_comment_path(@post, comment), data: { confirm: 'Are you sure?' }, :method => :delete %>
+<% if comment.approved || current_user %>
+<div id="comment-<%= comment.id %>">
+  <%= comment.content %><br />
+  <small class="muted">By <%= comment.author %> &middot; <%= comment.created_at.strftime("%B %d, %Y") %>
+    &middot; <%= comment.created_at.strftime("%H:%m") %> </small>
+  <% if current_user %><br />
+    <%= link_to 'Edit', edit_post_comment_path(@post, comment) %> &middot;
+    <%= link_to 'Delete', post_comment_path(@post, comment), data: { confirm: 'Are you sure?' }, :method => :delete %>
+    <% if !comment.approved %>
+      &middot; <%= link_to 'Approve', approve_comment_path(@post, comment), remote:true %>
+    <% end %>
+  <% end %><br /><br />
+</div>
 <% end %>
-<br /><br />

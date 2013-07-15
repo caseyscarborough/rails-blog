@@ -5,9 +5,10 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_username(params[:session][:username])
     if user && user.authenticate(params[:session][:password])
-      session[:user_id] = user.id
+      sign_in user
       flash[:success] = 'Login successful!'
-      redirect_to root_url
+      redirect_to session[:redirect_to] || root_url
+      session.delete(:redirect_to)
     else
       flash.now[:error] = 'Username/password combination is invalid.'
       render 'new'

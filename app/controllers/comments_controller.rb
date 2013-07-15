@@ -1,6 +1,8 @@
+require 'will_paginate/array'
+
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize, only: [:edit, :update, :destroy]
+  before_filter :authorize, only: [:edit, :update, :destroy, :approve, :approvals]
 
   def index
     @comments = Comment.all
@@ -21,6 +23,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
+    current_user ? @comment.approved = true : @comment.approved = false
 
     respond_to do |format|
       if @comment.save
@@ -56,7 +59,24 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @post.permalink, notice: 'Comment was successfully deleted' }
       format.json { head :ok }
+      format.js
     end
+  end
+
+  def approve
+    @comment = Comment.find(params[:id])
+    if !@comment.approved && current_user
+      @comment.approved = true
+      @comment.save
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def approvals
+    @comments = Comment.unapproved_comments
+    @comments = @comments.paginate(page: params[:page], per_page: 10)
   end
 
   private

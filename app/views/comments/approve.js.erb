@@ -1,0 +1,3 @@
+$('#comment-<%= @comment.id %>').html('<%= j render(@comment) %>');
+$('#comment-<%= @comment.id %>-not-approved').append('<br /><span class="label label-success">Comment approved.</span>').delay(3000).fadeOut(500);
+$('#comment-<%= @comment.id %>-not-approved span.approve').hide();

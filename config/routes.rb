@@ -24,6 +24,9 @@ RailsBlog::Application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
+  get '/posts/:post_id/comments/:id/approve', to: 'comments#approve', as: 'approve_comment'
+  get '/comments/approvals', to: 'comments#approvals', as: 'approvals'
+
   resources :sessions
   resources :users
 

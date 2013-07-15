@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     end
 
     @posts = @posts.order('created_at DESC')
-    @posts = @posts.paginate(page: params[:page], per_page: 5)
+    @posts = @posts.paginate(page: params[:page], per_page: BLOG['posts_per_page'])
 
   end
 

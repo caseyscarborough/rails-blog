@@ -19,5 +19,10 @@
     <%= link_to Date::MONTHNAMES[date[0].to_i].to_s + " " + date[1], '/' + date[1] + '/' + date[0] %><br />
   <% end %><br />
   <h4>Other</h4>
-  <%= if current_user then link_to "Logout", logout_path else link_to "Login", login_path end %>
+  <% if current_user %>
+    <%= link_to "Comment Approvals (" + Comment.unapproved_comments.count.to_s + ")", approvals_path, html: true %><br />
+    <%= link_to "Logout", logout_path %>
+  <% else %>
+    <%= link_to "Login", login_path %>
+  <% end %>
 </div>

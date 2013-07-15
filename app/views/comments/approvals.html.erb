@@ -1,0 +1,20 @@
+<% provide(:title, 'Comment Approvals') %>
+<h1>Comments Needing Approval</h1><br />
+
+<% @comments.each do |comment| %>
+
+  <div id="comment-<%= comment.id %>-not-approved"><br />
+    <%= link_to comment.post.title, comment.post.permalink %><br />
+    <%= comment.content %><br />
+    <small class="muted">By <%= comment.author %> &middot; <%= comment.created_at.strftime("%B %d, %Y") %>
+      &middot; <%= comment.created_at.strftime("%H:%m") %> </small>
+    <span class="comment-options">
+      <%= link_to 'Edit', edit_post_comment_path(comment.post, comment) %> &middot;
+      <%= link_to 'Delete', post_comment_path(comment.post, comment), data: { confirm: 'Are you sure?' }, method: :delete, remote: true %>
+      <span class="approve"> &middot; <%= link_to 'Approve', approve_comment_path(comment.post, comment), remote:true %></span>
+    </span>
+  </div>
+
+<% end %>
+
+<%= will_paginate @comments %>

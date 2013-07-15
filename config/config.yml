@@ -1,7 +1,24 @@
+# This is the main configuration file for the Rails Blog application. Change the
+# values in this file to change the way the application works. You'll need to restart
+# the Rails server for any of these changes to take effect.
+
 defaults: &defaults
+  # This is the default title for your blog. It shows up in the navigation bar.
   title: Rails Blog
+
+  # This is the author of the blog.
   author: Casey Scarborough
 
+  # This value is for the number of posts to show per page for the homepage.
+  posts_per_page: 4
+
+  # This value is the limit of how many characters to show on each post preview.
+  characters_per_post_preview: 500
+
+
+
+
+# Typically, the defaults for these sections are the best suitable settings.
 development:
   <<: *defaults
   show_parameters: true
