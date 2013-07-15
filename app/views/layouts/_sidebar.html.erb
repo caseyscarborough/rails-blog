@@ -1,0 +1,23 @@
+<div class="sidebar">
+  <br /><br /><br />
+  <h4>Most Recent Posts</h4>
+  <% Post.find(:all, order: 'created_at DESC', limit: 5).each do |post| %>
+    <%= link_to post.title, post.permalink %><br />
+  <% end %><br />
+  <h4>Archive</h4>
+  <%# This is really awful. I know. %>
+  <% @posts = Post.order('created_at DESC') %>
+  <% archive_array = [] %>
+  <% @posts.each do |post| %>
+    <% date = post.created_at.strftime("%m") + " " + post.created_at.strftime("%Y") %>
+    <% if !archive_array.include? date %>
+      <% archive_array << date %>
+    <% end %>
+  <% end %>
+  <% archive_array.each do |date| %>
+    <% date = date.split(' ') %>
+    <%= link_to Date::MONTHNAMES[date[0].to_i].to_s + " " + date[1], '/' + date[1] + '/' + date[0] %><br />
+  <% end %><br />
+  <h4>Other</h4>
+  <%= if current_user then link_to "Logout", logout_path else link_to "Login", login_path end %>
+</div>

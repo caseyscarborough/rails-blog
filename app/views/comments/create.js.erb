@@ -1,0 +1,4 @@
+$('input#comment_author').val('');
+$('input#comment_email').val('');
+$('textarea#comment_content').val('');
+$('.comments').append('<%= j render(@comment) %>');

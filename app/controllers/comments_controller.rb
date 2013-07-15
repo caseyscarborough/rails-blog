@@ -26,6 +26,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to @post.permalink, notice: 'Comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
+        format.js
       else
         flash[:error] = 'There was an error saving the comment.'
         format.html { redirect_to @post.permalink }

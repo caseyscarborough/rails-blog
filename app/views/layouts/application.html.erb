@@ -11,7 +11,7 @@
   <div class="top hidden-phone hidden-tablet"></div>
   <div class="container">
     <div class="row-fluid">
-      <div class="span2 hidden-phone"></div>
+      <div class="span1 hidden-phone"></div>
       <div class="span8">
         <% flash.each do |name, msg| %>
           <div class="alert alert-<%= name %>">
@@ -20,6 +20,9 @@
           </div>
         <% end %>
         <%= yield %>
+      </div>
+      <div class="span2">
+        <%= render 'layouts/sidebar' %>
       </div>
     </div>
   </div><br />

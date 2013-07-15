@@ -4,18 +4,8 @@
   <%= if current_user then link_to 'New Post', new_post_path, class: 'btn btn-primary pull-right' end %>
 </div>
 <div class="clear"></div><br />
-<% @posts.each do |post| %>
-  <div class="post shadow">
-    <h2><%= post.title %></h2>
-    <small class="muted"><%= post.created_at.strftime("%B %d, %Y") %></small>&nbsp;&nbsp;
-    <%= link_to 'Show', post.permalink %>
-    <% if current_user %>
-      &middot; <%= link_to 'Edit', edit_post_path(post) %> &middot;
-      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-    <p><%= truncate post.content, length: 255 %></p>
-  </div><br />
-<% end %>
+  <%= render @posts %>
+  <%= will_paginate @posts %>
 <div class="form-actions">
 </div>
 
