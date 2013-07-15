@@ -7,5 +7,5 @@
     &middot; <%= link_to 'Edit', edit_post_path(post) %> &middot;
     <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
-  <p><%= truncate(content, length: 255) %></p>
+  <p><%= truncate(content, length: 500) %></p>
 </div><br />
