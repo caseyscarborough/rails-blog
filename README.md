@@ -4,6 +4,14 @@ This is a full-featured blog engine built using Rails 4.0 and Ruby 2.0.
 
 A working copy of the application can be seen at [rails-blog.caseyscarborough.com](http://rails-blog.caseyscarborough.com).
 
+## Dependencies
+
+The application uses the following system dependencies:
+
+* Ruby 2.0.0 (possibly 1.9.3, but not tested)
+* Rails 4.0.0
+* Other gems listed in [Gemfile](https://github.com/caseyscarborough/rails-blog/blob/master/Gemfile)
+
 ## Installing the application
 
 If you'd like to check out the application or contribute to it, follow the instructions below.
@@ -22,13 +30,13 @@ First, you'll want to edit the [db/seeds.rb](https://github.com/caseyscarborough
 file and enter the information for your admin user's account.
 ```ruby
 User.create({
-  :username   => 'caseyscarborough',
-  :email      => 'casey@caseyscarborough.com',
-  :first_name => 'Casey',
-  :last_name  => 'Scarborough',
-  :password   => 'password',
-  :password_confirmation => 'password',
-  :is_admin   => true
+  username: 'caseyscarborough',
+  email: 'casey@caseyscarborough.com',
+  first_name: 'Casey',
+  last_name: 'Scarborough',
+  password: 'password',
+  password_confirmation: 'password',
+  is_admin: true
 })
 ```
 
@@ -51,17 +59,27 @@ rails server
 
 Then navigate to [http://localhost:3000](http://localhost:3000) in your web browser to see the application in action.
 
+## Running the tests
+
+The tests are built using the [RSpec](http://rspec.info/) testing framework and can be run by issuing the
+following command from the project root:
+
+```bash
+rspec spec/
+```
+
 ## To-Do
 
-* Come up with a suitable name for the project.
+* Come up with a suitable name for the project. Possible: Zen?
 * Add tags to posts.
-
+* Implement one-to-many relationship with User to Posts.
+* Develop admin 'dashboard'.
 
 ## Contributing
 
 Please feel free to contribute to the application by following the steps below:
 
-1. Fork it
+1. [Fork it](https://github.com/caseyscarborough/rails-blog/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
