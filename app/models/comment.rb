@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
 
   def self.unapproved_comments
     @comments = []
-    Comment.all.each { |c| @comments << c unless c.approved }
+    Comment.all.each { |c| @comments << c unless c.approved == true }
     @comments
   end
 end

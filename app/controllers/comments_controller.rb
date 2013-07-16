@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
-    current_user ? @comment.approved = true : @comment.approved = false
+    current_user ? @comment.approved == true : @comment.approved == false
 
     respond_to do |format|
       if @comment.save
