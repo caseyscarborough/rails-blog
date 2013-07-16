@@ -17,7 +17,7 @@
   <div class="span7">
     <div class="comments">
       <h3>Comments</h3>
-      <% if @post.number_of_approved_comments > 0 || current_user %>
+      <% if @post.approved_comments.size > 0 || current_user %>
         <%= render partial: @post.comments %>
       <% else %>
         There are no comments on this post yet.

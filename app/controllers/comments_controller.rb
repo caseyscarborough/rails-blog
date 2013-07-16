@@ -2,7 +2,8 @@ require 'will_paginate/array'
 
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize, only: [:edit, :update, :destroy, :approve, :approvals]
+  before_filter :authorize,
+                only: [:edit, :update, :destroy, :approve, :approvals]
 
   def index
     @comments = Comment.all
@@ -80,6 +81,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])

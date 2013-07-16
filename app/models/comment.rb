@@ -1,3 +1,10 @@
+# = Comment
+#
+# This model holds the basic information used for a comment.
+# Instances of the model belong to a post, and contain an
+# author, email, the content, and whether or not the comment
+# has been approved.
+
 class Comment < ActiveRecord::Base
   belongs_to :post
 
@@ -7,7 +14,7 @@ class Comment < ActiveRecord::Base
 
   def self.unapproved_comments
     @comments = []
-    Comment.all.each { |c| !c.approved ? @comments << c : next }
+    Comment.all.each { |c| @comments << c unless c.approved }
     @comments
   end
 end
